@@ -1,0 +1,70 @@
+/** --------------------------------- */
+/** ---------- TOPO ------------ */
+/** --------------------------------- */
+
+.meu-grupo-botoes{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 30px;
+}
+
+/** --------------------------------- */
+/** ---------- Novidades ------------ */
+/** --------------------------------- */
+
+.novidades {
+    color: #3399ee;;
+}
+
+.novidades h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    font-weight: normal;
+}
+
+.bloco-novidade {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 20px;
+}
+
+.bloco-novidade small {
+    display: block;
+    font-size: 11px;
+    margin-top: -8px;
+}
+
+.bloco-novidade p {
+    font-size: 14px;
+    color: #666;
+}
+
+/** --------------------------------- */
+/** -------- Informações ------------ */
+/** --------------------------------- */
+
+.informacoes {
+    color: darkred;
+}
+
+.informacoes h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    font-weight: normal;
+}
+
+.bloco-informacao {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 20px;
+}
+
+.bloco-informacao p {
+    font-size: 14px;
+    color: #666;
+}
