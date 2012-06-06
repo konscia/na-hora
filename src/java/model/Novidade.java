@@ -2,6 +2,7 @@ package model;
 
 public class Novidade {
     
+    protected String id;
     protected String titulo;
     protected String texto;
     protected String resumo;
@@ -12,6 +13,15 @@ public class Novidade {
     
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
     public String getData() {
         return data;
     }

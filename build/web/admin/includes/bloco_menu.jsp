@@ -4,7 +4,7 @@
       <ul class="nav nav-list">
           <li class="nav-header">Novidades</li>
           <li>
-              <a href="#">Listar Novidades</a>
+              <a href="list_novidades.jsp">Listar Novidades</a>
           </li>
           <li>
               <a href="cad_novidade.jsp">Cadastrar Novidade</a>

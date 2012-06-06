@@ -15,6 +15,7 @@ public class NovidadesDAO {
        
         while(linhas.next()){            
             Novidade n = new Novidade();
+            n.setId( linhas.getString("id") );
             n.setTitulo( linhas.getString("titulo") );
             n.setResumo( linhas.getString("resumo") );
             n.setTexto( linhas.getString("texto") );
@@ -24,6 +25,30 @@ public class NovidadesDAO {
         }
 
         return lista;        
+    }
+
+    public static ArrayList<Novidade> busca(String texto){
+
+        ArrayList<Novidade> lista = new ArrayList<Novidade>();
+        MySQL bancoDados = new MySQL();
+        String sql = "select * from novidades";
+                sql += " where ";
+                    sql += " titulo like \"%Prova%\" ";
+                    sql += "or resumo like \"%"+texto+"%\" ";                    
+        ConjuntoResultados linhas = bancoDados.executaSelect(sql);
+        
+        while(linhas.next()){
+            Novidade n = new Novidade();
+            n.setId( linhas.getString("id") );
+            n.setTitulo( linhas.getString("titulo") );
+            n.setResumo( linhas.getString("resumo") );
+            n.setTexto( linhas.getString("texto") );
+            n.setData( linhas.getString("data") );
+            n.setLink( linhas.getString("link") );
+            lista.add( n );
+        }
+
+        return lista;
     }
    
 }

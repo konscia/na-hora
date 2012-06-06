@@ -68,7 +68,8 @@ public class MySQL
             ConjuntoResultados cr = new ConjuntoResultados(rs);
             return cr;
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(null, ""+e, "Erro no SELECT", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, ""+e, "Erro no SELECT", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Erro na consulta: "+e);
             System.exit(0);
             return null;
         }
