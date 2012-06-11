@@ -62,9 +62,15 @@
     margin-bottom: 20px;
     border-bottom: 1px dashed #ddd;
     padding-bottom: 20px;
+    width: 100%;
+    float: left;
 }
 
 .bloco-informacao p {
     font-size: 14px;
     color: #666;
+}
+
+.bloco-informacao img {
+    margin-right: 10px;
 }

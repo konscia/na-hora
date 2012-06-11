@@ -16,7 +16,7 @@
                     out.print("<small>Publicado em "+n.getData()+"</small>");
                 out.print("</h3>");
                 out.print("<p>" + n.getResumo() + "</p>" );
-                out.print("<a href=\"#\">veja mais.</a>" );
+                out.print("<a href=\""+n.getLinkToPage()+"\">veja mais.</a>" );
             out.print("</div>");
         }
     %>
