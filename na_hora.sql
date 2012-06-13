@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jun 05, 2012 as 07:51 AM
--- Versão do Servidor: 5.1.53
+-- Tempo de Geração: Jun 13, 2012 as 02:36 PM
+-- Versão do Servidor: 5.5.17
 -- Versão do PHP: 5.3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -18,6 +18,28 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Banco de Dados: `na_hora`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `comentario`
+--
+
+CREATE TABLE IF NOT EXISTS `comentario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(80) DEFAULT NULL,
+  `texto` text,
+  `id_novidade` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Extraindo dados da tabela `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `nome`, `texto`, `id_novidade`) VALUES
+(5, 'Kaléu.!', 'meu primeiro comentário na aula.', 1),
+(6, 'João', 'Meu segundo comentário', 1);
 
 -- --------------------------------------------------------
 
