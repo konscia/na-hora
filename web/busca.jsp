@@ -24,14 +24,7 @@
 
                 ArrayList<Novidade> lista = NovidadesDAO.busca(textoBusca);
                 for( Novidade n : lista){
-                    out.print("<div class=\"bloco-novidade\">");
-                        out.print("<h3>");
-                            out.print( n.getTitulo() );
-                            out.print("<small>Publicado em "+n.getData()+"</small>");
-                        out.print("</h3>");
-                        out.print("<p>" + n.getResumo() + "</p>" );
-                        out.print("<a href=\"#\">veja mais.</a>" );
-                    out.print("</div>");
+                    out.println( n.getHTMLBlock() );
                 }
             %>
 

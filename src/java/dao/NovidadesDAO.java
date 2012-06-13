@@ -6,6 +6,9 @@ import util.*;
 
 public class NovidadesDAO {
 
+    public NovidadesDAO(){
+    }
+    
     public static ArrayList<Novidade> lista(){
         
         ArrayList<Novidade> lista = new ArrayList<Novidade>();

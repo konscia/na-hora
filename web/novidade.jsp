@@ -22,24 +22,39 @@
                     //Então, redireciona para a página de erro.
                     response.sendRedirect("erro.jsp");
                 }
+                
+                
 
                 //Se esta tudo bem, continua desenhando a página.
                 %>
                 <h2 class="page-header">
-            <!--    <% out.print(n.getTitulo()); %> -->
+                       
                     <%=n.getTitulo()%>
+                    
                     <small>Publicado em <%=n.getData()%></small>
                 </h2>
 
                 <p><%=n.getTexto()%></p>
                 <%
                 if(n.getLink() != null){
-                    String textoLink = HTMLUtil.link(n.getLink(), n.getLink());
-                    out.print( textoLink );
+                   // out.print("<a href=\""+n.getLink()+"\">"+n.getLink()+"</a>");
+                    //String textoLink = HTMLUtil.link(n.getLink(), n.getLink());
+                    out.print( HTMLUtil.link(n.getLink(), "Acessar link") );
                 }
                 %>
-            </div>   
+                
+                <div class="comentarios">        
+                    <h3>Comentários</h3>
+                    
+                    <jsp:include page="includes/comentarios_novidade.jsp" />
+                    <jsp:include page="includes/comentario_novidade.jsp" />
+                    
+                </div>
+            </div>                        
         </div>
+            
+            
+        
 
     </div>
     

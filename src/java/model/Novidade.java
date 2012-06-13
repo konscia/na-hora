@@ -106,7 +106,7 @@ public class Novidade {
                s += "<small>Publicado em "+this.getData()+"</small>";
             s += "</h3>";
             s += "<p>" + this.getResumo() + "</p>" ;
-            s += "<a href=\""+this.getLinkToPage()+"\">veja mais.</a>";
+            s += "<a class=\"btn btn-warning\" href=\""+this.getLinkToPage()+"\">veja mais.</a>";
         s+="</div>";
         return s;
     }

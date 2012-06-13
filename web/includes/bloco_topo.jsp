@@ -20,8 +20,8 @@
     </div>
 
     <div class="span4">
-        <form class="form-search pull-right" action="busca.jsp" method="POST">
-          <input type="text" class="input-medium search-query" name="texto_busca">
+        <form  action="busca.jsp" method="POST">
+          <input type="text" name="texto_busca">
           <button type="submit" class="btn">Buscar</button>
         </form>
     </div>
