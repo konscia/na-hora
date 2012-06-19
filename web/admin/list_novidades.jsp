@@ -1,3 +1,7 @@
+<%@page import="util.Util"%>
+<%
+Util.vericaLogin( session, response );
+%>
 <%@page import="model.Novidade"%>
 <%@page import="dao.NovidadesDAO"%>
 <%@page import="java.util.ArrayList"%>

@@ -8,7 +8,11 @@
 
     <%
         //Código java
-        ArrayList<Novidade> lista = NovidadesDAO.lista();
+        String categoria = request.getParameter("categoria");
+        if(categoria == null){
+            categoria = "1";
+        }
+        ArrayList<Novidade> lista = NovidadesDAO.listaPorCategoria( categoria );
         for( Novidade n : lista){
             out.print( n.getHTMLBlock() );
         }

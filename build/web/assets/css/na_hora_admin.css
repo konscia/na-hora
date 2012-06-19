@@ -6,3 +6,12 @@ body {
 .table tbody tr:hover td, .table tbody tr:hover th {
     background-color: darkblue;
 }
+
+.login {
+    margin-top: 30%;
+}
+
+.login .btn-primary {
+    float: right;
+    margin-right: 40px;
+}

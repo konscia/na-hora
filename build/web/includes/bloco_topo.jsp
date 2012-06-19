@@ -12,10 +12,10 @@
 <div class="row meu-grupo-botoes">
     <div class="span8">
         <div class="btn-group">
-                <a href="index.jsp" class="btn btn-warning">Programação OO 2 </a>
-                <a href="#" class="btn">Banco de Dados 2</a>
-                <a href="#" class="btn">TCC</a>
-                <a href="#" class="btn">Coordenação</a>
+                <a href="index.jsp?categoria=1" class="btn">Programação OO 2 </a>
+                <a href="index.jsp?categoria=2" class="btn">Banco de Dados 2</a>
+                <a href="index.jsp?categoria=3" class="btn">TCC</a>
+                <a href="index.jsp?categoria=4" class="btn">Coordenação</a>
         </div>
     </div>
 

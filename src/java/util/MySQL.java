@@ -22,7 +22,6 @@ public class MySQL
             statement = conn.createStatement();
         } catch (ClassNotFoundException e){
             System.out.println("Driver MySQL não encontrado.");
-            System.exit(0);
         } catch (SQLException e){
             System.out.println("Erro na conex�o com a base de dados: "+e);
         }        
@@ -70,7 +69,6 @@ public class MySQL
         } catch (SQLException e){
             //JOptionPane.showMessageDialog(null, ""+e, "Erro no SELECT", JOptionPane.ERROR_MESSAGE);
             System.out.println("Erro na consulta: "+e);
-            System.exit(0);
             return null;
         }
     }       

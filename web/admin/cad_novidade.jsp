@@ -1,3 +1,8 @@
+
+<%@page import="util.Util"%>
+<%
+Util.vericaLogin( session, response );
+%>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -57,6 +62,20 @@
                         </div>
                       </div>
 
+                      <div class="control-group">
+                        <label class="control-label" for="categoria">
+                            Categoria
+                        </label>
+                        <div class="controls">
+                            <select name="categoria">
+                                <option value="1">Programação OO</option>
+                                <option value="2">Banco de Dados</option>
+                                <option value="3">TCC</option>
+                                <option value="4">Administrativo</option>                                
+                            </select>
+                        </div>
+                      </div>
+                        
                       <div class="form-actions">
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                       </div>

@@ -21,7 +21,7 @@
           <li class="divider"></li>
 
           <li>
-              <a href="#">Um link qualquer</a>
+              <a href="acao/logout.jsp">Sair</a>
           </li>
       </ul>
   </div>
