@@ -28,6 +28,27 @@
                           <input type="file" id="file" name="file" size="50" />
                         </div>
                       </div>
+
+
+                      <div class="control-group">
+                        <label class="control-label" for="file2">
+                            Arquivo 2
+                        </label>
+
+                        <div class="controls">
+                          <input type="file" id="file2" name="file2" size="50" />
+                        </div>
+                      </div>
+
+                        <div class="control-group">
+                        <label class="control-label" for="texto">
+                            Texto 1
+                        </label>
+
+                        <div class="controls">
+                          <input type="text" id="texto" name="texto" size="50" />
+                        </div>
+                      </div>
                         
                       <div class="form-actions">
                         <button type="submit" class="btn btn-primary">Cadastrar</button>

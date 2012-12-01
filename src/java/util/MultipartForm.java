@@ -12,7 +12,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-public class UploadFile {
+public class MultipartForm {
 
     protected int maxFileSize;
     protected int maxMemSize;
@@ -20,24 +20,32 @@ public class UploadFile {
     PageContext pageContext;
     HttpServletRequest request;
 
-    String destino;
-
     ServletFileUpload upload;
 
-    String nomeFinal;
+    List fileItems;
 
-    public UploadFile(PageContext pageContext, HttpServletRequest request, String destino){
+    public MultipartForm(PageContext pageContext, HttpServletRequest request){
        maxFileSize = 5000 * 1024;
        maxMemSize = 5000 * 1024;
 
        this.pageContext = pageContext;
        this.request = request;
-       this.destino = destino;
-
        this.createUploadObject();
+
+       if (!this.isMultipart()) {
+           System.out.print("Faltou o multipart no formulário.");
+           return;
+        }
+
+       // Parse the request to get file items.
+       try {
+             this.fileItems = upload.parseRequest(request);
+       }catch(Exception ex) {
+             System.out.println(ex);
+       }
     }
 
-    public void createUploadObject(){
+    private void createUploadObject(){
         DiskFileItemFactory factory = new DiskFileItemFactory();
         // maximum size that will be stored in memory
         factory.setSizeThreshold(maxMemSize);
@@ -56,20 +64,16 @@ public class UploadFile {
        return filePath;
     }
 
-    public String getNomeFinal(){
-        return this.nomeFinal;
+    private String getUploadPath(String destino){
+        return this.getRealPath()+destino+"/";
     }
 
-    public String getUploadPath(){
-        return this.getRealPath()+this.destino+"/";
-    }
-
-    public boolean isMultipart(){
+    private boolean isMultipart(){
         String contentType = request.getContentType();
         return (contentType.indexOf("multipart/form-data") >= 0);
     }
 
-    public String getOnlyFileName(String fileName){
+    private String getOnlyFileName(String fileName){
         String s = "";
          if( fileName.lastIndexOf("\\") >= 0 ){
             s = fileName.substring( fileName.lastIndexOf("\\"));
@@ -79,7 +83,7 @@ public class UploadFile {
         return s.substring(0, s.lastIndexOf(".")-1);
     }
 
-    public String getExtensao(String fileName){
+    private String getExtensao(String fileName){
         String s = "";
          if( fileName.lastIndexOf("\\") >= 0 ){
             s = fileName.substring( fileName.lastIndexOf("\\"));
@@ -89,7 +93,7 @@ public class UploadFile {
         return s.substring(s.lastIndexOf("."));
     }
 
-    public void uploadFile(FileItem fi) throws Exception{
+    private File uploadFile(FileItem fi, String destino){
         Date timestamp = new Date();
         
         // Get the uploaded file parameters
@@ -101,37 +105,46 @@ public class UploadFile {
         String ext = this.getExtensao(fileName);
 
         File file;
-        this.nomeFinal = onlyFileName + "_" + complement + ext;
+        String nomeFinal = onlyFileName + "_" + complement + ext;
         // Write the file
-        file = new File( this.getUploadPath() + this.nomeFinal);
-        fi.write( file );
-        System.out.println("Uploaded Filename: " + this.getUploadPath() + fileName + "<br>");
+        file = new File( this.getUploadPath(destino) + nomeFinal);
+        try {
+            fi.write(file);
+            System.out.println("Uploaded Filename: " + this.getUploadPath(destino) + fileName + "<br>");
+            return file;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
     }
 
-    public boolean save(){
-        
-        if (!this.isMultipart()) {
-           System.out.print("Faltou o multipart no formulário");
-           return false;
+    public String getValue(String fieldName){
+         Iterator i = fileItems.iterator();
+         while ( i.hasNext () ) {
+            FileItem fi = (FileItem)i.next();
+            if ( fi.isFormField() && fi.getFieldName().equals(fieldName) ){
+                return fi.getString();
+            }
         }
 
-        try{
-             // Parse the request to get file items.
-             List fileItems = upload.parseRequest(request);
-             // Process the uploaded file items
-             Iterator i = fileItems.iterator();
-             while ( i.hasNext () ) {
-                FileItem fi = (FileItem)i.next();
-                if ( !fi.isFormField () ){
-                    this.uploadFile(fi);
-                }
-             }
-          }catch(Exception ex) {
-             System.out.println(ex);
-             return false;
-          }
+        return null;
+    }
 
-        return true;
+    public File saveFile(String fieldName, String destino){
+        // Process the uploaded file items
+         Iterator i = fileItems.iterator();
+         while ( i.hasNext () ) {
+            FileItem fi = (FileItem)i.next();
+            if ( !fi.isFormField() && fi.getFieldName().equals(fieldName) ){
+                return uploadFile(fi, destino);
+            }
+        }
+
+        return null;
+    }
+
+    public List<FileItem> getItems(){
+        return fileItems;
     }
 
 }
